@@ -12,24 +12,22 @@ pipeline {
         }
         stage('Terraform Init') {
             steps {
-                sh 'terraform -chdir=infra/init'
+                sh 'terraform -chdir=infra init'
             }
         }
-        stage('Terraform validate') {
+        stage('Terraform Validate') {
             steps {
-                sh 'terraform -chdir=infra/validate'
+                sh 'terraform -chdir=infra validate'
             }
         }
         stage('Terraform Plan') {
             steps {
-                sh 'terraform -chdir=infra/plan'
+                sh 'terraform -chdir=infra plan '
             }
         }
-
-
         stage('Terraform Apply') {
             steps {
-                sh 'terraform -chdir=infra/apply -auto-approve'
+                sh 'terraform -chdir=infra apply -auto-approve '
             }
         }
     }
